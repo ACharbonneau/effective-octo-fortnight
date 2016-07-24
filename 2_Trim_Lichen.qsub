@@ -16,4 +16,6 @@ cd ${PBS_O_WORKDIR} || exit
 
 module load Trimmomatic/0.33
 
-java -jar $TRIM/trimmomatic PE -threads 7 -trimlog lichenTrim.log ../CrX1_GCCAAT_L001_R1_001.fastq ../CrX1_GCCAAT_L001_R2_001.fastq Cr_P_1.fastq Cr_U_1.fastq Cr_P_2.fastq Cr_U_2.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING: SLIDINGWINDOW:4:15 MINLEN:51
+java -jar $TRIM/trimmomatic PE -threads 7 -trimlog lichenTrim.log ../CrX1_GCCAAT_L001_R1_001.fastq ../CrX1_GCCAAT_L001_R2_001.fastq Cr_P_1.fastq Cr_U_1.fastq Cr_P_2.fastq Cr_U_2.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:51
+
+
