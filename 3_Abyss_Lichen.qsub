@@ -23,5 +23,5 @@ module load ABySS/1.9.0
 if [ "${kmer}" -le "63" ]; then
 	newkmer=$[${kmer} +1]
 	#echo $newkmer
-	qsub 3_Abyss_Lichen.qsub -v kmer=${newkmer}
+	qsub 3_Abyss_Lichen.qsub -v kmer="${newkmer}"
 fi
