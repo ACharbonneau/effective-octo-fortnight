@@ -13,8 +13,11 @@
 # -r n : tells it not to re-run the script in the case of an error (so it doesn't overwrite any results generated$
 # -t 0-? : job numbers for array submission
 
+cd ${PBS_O_WORKDIR}
+
 
 mkdir k${kmer}
+
 
 module load ABySS/1.9.0
 
