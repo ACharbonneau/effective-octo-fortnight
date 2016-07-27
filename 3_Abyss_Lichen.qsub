@@ -2,7 +2,7 @@
 #PBS -j oe
 #PBS -l nodes=1:ppn=8,walltime=4:00:00,mem=10gb
 #PBS -m abe
-#PBS -N abyss_lichen_${kmer}
+
 
 # -o : tells it where to put output from your job
 # -j oe : specifies that output and error messages from your job can be placed in the same location
@@ -21,10 +21,10 @@ mkdir k${kmer}
 
 module load ABySS/1.9.0
 
-    abyss-pe k=${kmer} -C k${kmer} name=${PBS_JOBID} in='../Cr_P_1.fastq  ../Cr_P_2.fastq' se='../Cr_U_1.fastq  ../Cr_U_2.fastq'
+    abyss-pe k=${kmer} -C k${kmer} name=abyss_lichen_${kmer} in='../Cr_P_1.fastq  ../Cr_P_2.fastq' se='../Cr_U_1.fastq  ../Cr_U_2.fastq'
     
-if [ "${kmer}" -le "63" ]; then
-	newkmer=$[${kmer} +1]
+if [ "${kmer}" -le "71" ]; then
+	newkmer=$[${kmer} + 2]
 	#echo $newkmer
-	qsub ../effective-octo-fortnight/3_Abyss_Lichen.qsub -v kmer="${newkmer}"
+	qsub ../effective-octo-fortnight/3_Abyss_Lichen.qsub -N "abyss_lichen_${newkmer}" -v kmer="${newkmer}"
 fi
