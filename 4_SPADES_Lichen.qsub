@@ -1,6 +1,6 @@
 #!/bin/sh -login
 #PBS -j oe
-#PBS -l nodes=1:ppn=8,walltime=4:00:00,mem=10gb
+#PBS -l nodes=1:ppn=8,walltime=4:00:00,mem=20gb
 #PBS -m abe
 
 
@@ -16,15 +16,8 @@
 cd ${PBS_O_WORKDIR}
 
 
-mkdir k${kmer}
-
 
 module load SPAdes/3.7.1
-
-    spades.py -1 ../Cr_P_1.fastq -2 ../Cr_P_2.fastq --pe<1>-s ../Cr_U_1.fastq --pe<2>-s ../Cr_U_2.fastq -o k${kmer}
+    ~/SoftwareFiles/SPAdes-3.9.0-Linux/bin/spades.py -t 8 -m 20 -1 ../../CrX1_GCCAAT_L001_R1_001.fastq -2 ../../CrX1_GCCAAT_L001_R2_001.fastq -o SPADES
         
-if [ "${kmer}" -le "71" ]; then
-	newkmer=$[${kmer} + 2]
-	#echo $newkmer
-	qsub ../4_SPADES_Lichen -N "SPADES_lichen_${newkmer}" -v kmer="${newkmer}"
-fi
+ #   ~/SoftwareFiles/SPAdes-3.9.0-Linux/bin/spades.py -t 8 -m 20 -1 ../Cr_P_1.fastq -2 ../Cr_P_2.fastq --pe1-s ../Cr_U_1.fastq --pe2-s ../Cr_U_2.fastq -o SPADES
