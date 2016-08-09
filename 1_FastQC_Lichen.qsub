@@ -29,3 +29,11 @@ module load FastQC/0.11.3
 
 fastqc ../CrX1_GCCAAT_L001_R1_001.fastq -o FastQC
 fastqc ../CrX1_GCCAAT_L001_R2_001.fastq -o FastQC
+
+
+#module load FastQC/0.11.3
+
+#fastqc Cr_P_1.fastq -o TrimmedFastQC
+#fastqc Cr_P_2.fastq -o TrimmedFastQC
+#fastqc Cr_U_1.fastq -o TrimmedFastQC
+#fastqc Cr_U_2.fastq -o TrimmedFastQC

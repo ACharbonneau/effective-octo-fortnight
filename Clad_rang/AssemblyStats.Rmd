@@ -1,0 +1,49 @@
+---
+title: "AssemblyStats"
+author: "Amanda Charbonneau"
+date: "July 27, 2016"
+output: html_document
+---
+
+
+
+```{r, echo=FALSE}
+rm(list = ls())
+require(plyr)
+require(ggplot2)
+require(GGally)
+
+ALLTHEFILES <- dir("../../AssemStat/")
+
+File_Num <- length(ALLTHEFILES)
+
+ALLTHESTATS <- read.csv(paste("../../AssemStat/", ALLTHEFILES[1], sep=""), sep = "\t")
+
+for (X in c(2:File_Num)){
+  ALLTHESTATS <- rbind(ALLTHESTATS, 
+                       read.csv( paste("../../AssemStat/", ALLTHEFILES[X], sep=""), sep = "\t"))}
+
+ALLTHESTATS$K <- rep(seq(49, 73, by=2), times = 1, each=3)
+
+ALLTHESTATS$color <- rep(paste("k",seq(49, 73, by=2),sep="_"), times = 1, each=3)
+
+
+
+```
+
+```{r, echo=FALSE}
+
+Unitigs <- dplyr::slice(ALLTHESTATS, c(seq(1, 21, by= 3)))
+Contigs <- dplyr::slice(ALLTHESTATS, c(seq(2, 21, by= 3)))
+Scaffolds <- dplyr::slice(ALLTHESTATS, c(seq(3, 21, by= 3)))
+
+```
+
+```{r, echo=FALSE}
+
+ggpairs( Contigs, columns = c(1, 2, 3, 4, 6), aes(col=color, alpha=.75))
+
+plot(Contigs$N50, Contigs$L50)
+
+```
+
