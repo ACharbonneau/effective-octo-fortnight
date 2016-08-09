@@ -1,1 +1,0 @@
-qsub ../../effective-octo-fortnight/4_SPADES_Lichen.qsub -N SPADES_lichen_47  -v kmer=47
