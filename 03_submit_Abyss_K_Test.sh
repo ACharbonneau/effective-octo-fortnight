@@ -1,1 +1,1 @@
-qsub ../../effective-octo-fortnight/3_abyss_Lichen.qsub -N abyss_lichen_47  -v kmer=47
+qsub ../../effective-octo-fortnight/3_abyss_Lichen.qsub -N abyss_lichen_75  -v kmer=75
