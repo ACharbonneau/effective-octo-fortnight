@@ -1,1 +1,1 @@
-qsub ../../effective-octo-fortnight/3_abyss_Lichen.qsub -N abyss_lichen_75  -v kmer=75
+qsub ../../effective-octo-fortnight/03_submit_Abyss_K_Test.sh -N abyss_lichen_75 -v kmer=75
