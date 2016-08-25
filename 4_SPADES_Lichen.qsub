@@ -12,11 +12,10 @@
 # -N : names your job
 # -r n : tells it not to re-run the script in the case of an error (so it doesn't overwrite any results generated$
 # -t 0-? : job numbers for array submission
+source .bash_profile
 
 cd ${PBS_O_WORKDIR}
 
 
-module load HMMER/3.1b2
-module load SPAdes/3.7.1
-    ~/SoftwareFiles/SPAdes-3.9.0-Linux/bin/spades.py -t 8 -m 20 -1 ../RawReads/CrX1_GCCAAT_L001_R1_001.fastq -2 ../RawReads/CrX1_GCCAAT_L001_R2_001.fastq -o RawSPADES
+spades.py -t 8 -m 20 -1 ../RawReads/CrX1_GCCAAT_L001_R1_001.fastq -2 ../RawReads/CrX1_GCCAAT_L001_R2_001.fastq -o RawSPADES
         
