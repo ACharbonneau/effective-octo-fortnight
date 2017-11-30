@@ -1,7 +1,7 @@
 #!/bin/sh -login
 #PBS -j oe
-#PBS -l nodes=1:ppn=8,walltime=4:00:00,mem=10gb
-#PBS -m abe
+#PBS -l nodes=1:ppn=1,walltime=4:00:00,mem=10gb
+#PBS -m a
 
 # -o : tells it where to put output from your job
 # -j oe : specifies that output and error messages from your job can be placed in the same location
@@ -12,10 +12,22 @@
 # -r n : tells it not to re-run the script in the case of an error (so it doesn't overwrite any results generated$
 # -t 0-? : job numbers for array submission
 
+module load FastQC/0.11.5
+
 cd ${PBS_O_WORKDIR} || exit
 
-module load Trimmomatic/0.33
 
-java -jar $TRIM/trimmomatic PE -threads 7 -trimlog lichenTrim.log ../CrX1_GCCAAT_L001_R1_001.fastq ../CrX1_GCCAAT_L001_R2_001.fastq Cr_P_1.fastq Cr_U_1.fastq Cr_P_2.fastq Cr_U_2.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:51
+cd RawReads
+
+gunzip -c ../CrX1_GCCAAT_L001_R1_001.fastq.gz > CrX1_GCCAAT_L001_R1_001.fastq
+gunzip -c ../CrX1_GCCAAT_L001_R2_001.fastq.gz > CrX1_GCCAAT_L001_R2_001.fastq
+
+cd ../QualityControl/raw
 
 
+fastqc ../../RawReads/CrX1_GCCAAT_L001_R1_001.fastq
+fastqc ../../RawReads/CrX1_GCCAAT_L001_R2_001.fastq
+
+cd ../../ || exit
+
+qsub effective-octo-fortnight/1.2_Trim_Lichen.qsub

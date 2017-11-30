@@ -1,0 +1,24 @@
+#!/bin/sh -login
+#PBS -j oe
+#PBS -l nodes=1:ppn=20,walltime=4:00:00,mem=10gb
+#PBS -m a
+
+# -o : tells it where to put output from your job
+# -j oe : specifies that output and error messages from your job can be placed in the same location
+# -l : resource requests (maximum amounts needed for each)
+# -M : email address to send status updates to
+# -m abe : what to send email updates about (abort, begin, end)
+# -N : names your job
+# -r n : tells it not to re-run the script in the case of an error (so it doesn't overwrite any results generated$
+# -t 0-? : job numbers for array submission
+
+cd ${PBS_O_WORKDIR} || exit
+
+cd ProcessedReads
+
+module load Trimmomatic/0.33
+
+java -jar $TRIM/trimmomatic PE -threads 19 -trimlog lichenTrim.log \
+../RawReads/CrX1_GCCAAT_L001_R1_001.fastq ../RawReads/CrX1_GCCAAT_L001_R2_001.fastq Cr_P_1.fastq \
+Cr_U_1.fastq Cr_P_2.fastq Cr_U_2.fastq ILLUMINACLIP:../Metadata/alladaptors.fa:2:30:10 \
+LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:51
