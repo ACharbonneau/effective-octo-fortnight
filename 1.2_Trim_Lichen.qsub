@@ -22,3 +22,7 @@ java -jar $TRIM/trimmomatic PE -threads 19 -trimlog lichenTrim.log \
 ../RawReads/CrX1_GCCAAT_L001_R1_001.fastq ../RawReads/CrX1_GCCAAT_L001_R2_001.fastq Cr_P_1.fastq \
 Cr_U_1.fastq Cr_P_2.fastq Cr_U_2.fastq ILLUMINACLIP:../Metadata/alladaptors.fa:2:30:10 \
 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:51
+
+qsub ../effective-octo-fortnight/1.3_BWA_PhiX.qsub
+
+#qsub ../../effective-octo-fortnight/3_Abyss_Lichen.qsub -N abyss_lichen_75 -v kmer=75
