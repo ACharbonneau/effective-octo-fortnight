@@ -19,8 +19,8 @@ cd ${PBS_O_WORKDIR} || exit
 
 cd RawReads || exit
 
-gunzip -c ../CrX1_GCCAAT_L001_R1_001.fastq.gz > CrX1_GCCAAT_L001_R1_001.fastq
-gunzip -c ../CrX1_GCCAAT_L001_R2_001.fastq.gz > CrX1_GCCAAT_L001_R2_001.fastq
+gunzip -c CrX1_GCCAAT_L001_R1_001.fastq.gz > CrX1_GCCAAT_L001_R1_001.fastq
+gunzip -c CrX1_GCCAAT_L001_R2_001.fastq.gz > CrX1_GCCAAT_L001_R2_001.fastq
 
 cd ../QualityControl/raw || exit
 
