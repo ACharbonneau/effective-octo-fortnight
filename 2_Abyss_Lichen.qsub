@@ -21,10 +21,10 @@ mkdir k${kmer}
 
 module load ABySS/1.9.0
 
-    abyss-pe k=${kmer} -C k${kmer} name=abyss_lichen_${kmer} in='../../Cr_P_1.fastq  ../../Cr_P_2.fastq' se='../../Cr_U_1.fastq  ../../Cr_U_2.fastq'
+    abyss-pe k=${kmer} -C k${kmer} name=abyss_lichen_${kmer} in='../../PairCR' se='../../UnpairCr'
 
 if [ "${kmer}" -le "95" ]; then
 	newkmer=$[${kmer} + 2]
 	#echo $newkmer
-	qsub ../../effective-octo-fortnight/3_Abyss_Lichen.qsub -N "abyss_lichen_${newkmer}" -v kmer="${newkmer}"
+	qsub ../../effective-octo-fortnight/2_Abyss_Lichen.qsub -N "abyss_lichen_${newkmer}" -v kmer="${newkmer}"
 fi

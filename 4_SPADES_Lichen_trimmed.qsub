@@ -13,9 +13,9 @@
 # -r n : tells it not to re-run the script in the case of an error (so it doesn't overwrite any results generated$
 # -t 0-? : job numbers for array submission
 
-source .bash_profile
-cd ${PBS_O_WORKDIR} || exit
+module load SPAdes/3.10.1
 
+cd ${PBS_O_WORKDIR} || exit
 
 
 spades.py -t 8 -m 20 -1 ../TrimmedReads/Cr_P_1.fastq -2 ../TrimmedReads/Cr_P_2.fastq --pe1-s ../TrimmedReads/Cr_U_1.fastq --pe2-s ../TrimmedReads/Cr_U_2.fastq -o TrimmedSpades

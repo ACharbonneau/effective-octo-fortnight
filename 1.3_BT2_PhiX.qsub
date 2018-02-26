@@ -12,3 +12,5 @@ bowtie2-build ../../PublicData/PhiX/PhiX.fasta PhiX #build index
 bowtie2 -x ../../PublicData/PhiX/PhiX ../../PublicData/PhiX/PhiX.fasta \
 -1 Cr_P_1.fastq -2 Cr_P_2.fastq -U Cr_U_1.fastq,Cr_U_2.fastq -S PhiXhits.sam -q\
 --fast --un UnpairCr --un-conc PairCR -p10
+
+qsub ../../effective-octo-fortnight/3_Abyss_Lichen.qsub -N abyss_lichen_75 -v kmer=75

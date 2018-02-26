@@ -12,7 +12,9 @@
 # -N : names your job
 # -r n : tells it not to re-run the script in the case of an error (so it doesn't overwrite any results generated$
 # -t 0-? : job numbers for array submission
-source .bash_profile
+
+
+module load SPAdes/3.10.1
 
 cd ${PBS_O_WORKDIR} || exit
 
