@@ -29,5 +29,5 @@ cp ~/Crangiferina/Public/JunttilaSanger.fa .
 cd ../PhiX || exit
 cp ~/Crangiferina/Public/PhiX.fasta .
 
-cd .. || exit
+cd ../.. || exit
 qsub effective-octo-fortnight/1.1_FastQC_Lichen.qsub
