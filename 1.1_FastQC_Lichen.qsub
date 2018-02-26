@@ -17,12 +17,12 @@ module load FastQC/0.11.5
 cd ${PBS_O_WORKDIR} || exit
 
 
-cd RawReads
+cd RawReads || exit
 
 gunzip -c ../CrX1_GCCAAT_L001_R1_001.fastq.gz > CrX1_GCCAAT_L001_R1_001.fastq
 gunzip -c ../CrX1_GCCAAT_L001_R2_001.fastq.gz > CrX1_GCCAAT_L001_R2_001.fastq
 
-cd ../QualityControl/raw
+cd ../QualityControl/raw || exit
 
 
 fastqc ../../RawReads/CrX1_GCCAAT_L001_R1_001.fastq

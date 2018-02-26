@@ -13,7 +13,7 @@
 # -r n : tells it not to re-run the script in the case of an error (so it doesn't overwrite any results generated$
 # -t 0-? : job numbers for array submission
 
-cd ${PBS_O_WORKDIR}
+cd ${PBS_O_WORKDIR} || exit
 
 
 mkdir k${kmer}
@@ -22,7 +22,7 @@ mkdir k${kmer}
 module load ABySS/1.9.0
 
     abyss-pe k=${kmer} -C k${kmer} name=abyss_lichen_${kmer} in='../../Cr_P_1.fastq  ../../Cr_P_2.fastq' se='../../Cr_U_1.fastq  ../../Cr_U_2.fastq'
-    
+
 if [ "${kmer}" -le "95" ]; then
 	newkmer=$[${kmer} + 2]
 	#echo $newkmer

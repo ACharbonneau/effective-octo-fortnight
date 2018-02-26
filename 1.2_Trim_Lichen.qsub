@@ -14,7 +14,7 @@
 
 cd ${PBS_O_WORKDIR} || exit
 
-cd ProcessedReads
+cd ProcessedReads || exit
 
 module load Trimmomatic/0.33
 
