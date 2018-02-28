@@ -21,7 +21,7 @@ mkdir k${kmer}
 
 module load ABySS/1.9.0
 
-    abyss-pe k=${kmer} -C k${kmer} name=abyss_lichen_${kmer} in='../../PairCR' se='../../UnpairCr'
+    abyss-pe k=${kmer} -C k${kmer} name=abyss_lichen_${kmer} in='../PairCR.1 ../PairCR.2' se='../UnpairCr'
 
 if [ "${kmer}" -le "95" ]; then
 	newkmer=$[${kmer} + 2]
